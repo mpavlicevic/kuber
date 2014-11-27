@@ -1,0 +1,17 @@
+{
+  "name": "kuber",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "kuber": "./bin/kuber.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tiago Luchini <luchini@work.co>",
+  "license": "MIT",
+  "dependencies": {
+    "nopt": "^3.0.1"
+  }
+}
