@@ -12,6 +12,8 @@
   "author": "Tiago Luchini <luchini@work.co>",
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.0.3",
+    "execSync": "^1.0.2",
     "nopt": "^3.0.1"
   }
 }
