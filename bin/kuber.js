@@ -3,14 +3,15 @@
 var nopt = require('nopt'),
     config = require('../lib/config'),
     msg = require('../lib/msg'),
-    systemcheck = require('../lib/cli/system-check'),
-    tree = require('../lib/tree').parsed();
+    systemcheck = require('../lib/cli/system-check');
 
 var parsed = nopt(config.types, config.shorthands);
 
-console.log(parsed);
+// console.log(parsed);
 
 try {
+  var tree = require('../lib/tree').parsed()
+  
   systemcheck.run();
   
   var cmd = parsed.argv.cooked.shift();

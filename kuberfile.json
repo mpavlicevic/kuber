@@ -2,16 +2,6 @@
   "name": "kuberfile-test",
   "author": "Tiago Luchini <luchini@work.co>",
   "containers": {
-    "mysql": {
-      "image": "mysql",
-      "ports": [{
-        "containerPort": 3306,
-        "hostPort": 3306
-      }],
-      "env": {
-        "MYSQL_ROOT_PASSWORD": "test"
-      }
-    },
     "wordpress": {
       "image": "wordpress",
       "ports": [{
@@ -23,9 +13,19 @@
         "WORDPRESS_DB_PASSWORD": "test"
       },
       "links": [{
-        "containerName": "mysql",
-        "id": "mysql"
+        "containerId": "mysql",
+        "linkId": "mysql"
       }]
+    },
+    "mysql": {
+      "image": "mysql",
+      "ports": [{
+        "containerPort": 3306,
+        "hostPort": 3306
+      }],
+      "env": {
+        "MYSQL_ROOT_PASSWORD": "test"
+      }
     }
   }
 }
