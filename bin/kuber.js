@@ -5,22 +5,22 @@ var nopt = require('nopt'),
     msg = require('../lib/msg'),
     systemcheck = require('../lib/cli/system-check');
 
-var parsed = nopt(config.types, config.shorthands);
+var opts = nopt(config.types, config.shorthands);
 
-// console.log(parsed);
+// console.log(opts);
 
 try {
-  var tree = require('../lib/tree').parsed()
+  var tree = require('../lib/tree').parsed();
   
   systemcheck.run();
   
-  var cmd = parsed.argv.cooked.shift();
+  var cmd = opts.argv.cooked.shift();
 
   if (config.clicmds[cmd]) {
-    config.clicmds[cmd].run(parsed);
+    config.clicmds[cmd].run(opts, tree);
   }
-  console.log('Done! All good! \n'.green);
+  console.log('\nDone! All good! \n'.green);
 } catch (err) {
   msg.error(err);
-  console.log('Done with errors!\n'.red);
+  console.log('\nDone with errors!\n'.red);
 }
