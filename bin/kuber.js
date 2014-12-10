@@ -10,8 +10,10 @@ var opts = nopt(config.types, config.shorthands);
 // console.log(opts);
 
 try {
-  var tree = require('../lib/tree').parsed();
   
+  var tree = require('../lib/tree').parsed();
+
+  //TODO  if no cmd is sent, no need to run the check  
   systemcheck.run();
   
   var cmd = opts.argv.cooked.shift();
