@@ -7,22 +7,30 @@ var nopt = require('nopt'),
 
 var opts = nopt(config.types, config.shorthands);
 
-// console.log(opts);
+console.log('\nKuber'.bold.underline + ' (v0.0.1)');
 
-try {
+if (opts.argv.cooked.length === 0) {
+  console.log('\nSyntax: ' + 'kuber'.bold + ' <cmd>\n'.green.bold);
+  console.log('Available commands:\n');
+  console.log('  start'.green.bold + '..........: starts all containers defined in kuberfile.json');
+  console.log('\n');
+} else {
+
+  try {
   
-  var tree = require('../lib/tree').parsed();
+    var tree = require('../lib/tree').parsed();
 
-  //TODO  if no cmd is sent, no need to run the check, just fail right away with help instead  
-  systemcheck.run();
+    systemcheck.run();
   
-  var cmd = opts.argv.cooked.shift();
+    var cmd = opts.argv.cooked.shift();
 
-  if (config.clicmds[cmd]) {
-    config.clicmds[cmd].run(opts, tree);
+    if (config.clicmds[cmd]) {
+      config.clicmds[cmd].run(opts, tree);
+    }
+    console.log('\nDone! All good! \n'.green);
+  } catch (err) {
+    msg.error(err);
+    console.log('\nDone with errors!\n'.red);
   }
-  console.log('\nDone! All good! \n'.green);
-} catch (err) {
-  msg.error(err);
-  console.log('\nDone with errors!\n'.red);
+
 }
