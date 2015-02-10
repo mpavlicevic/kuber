@@ -13,7 +13,7 @@ try {
   
   var tree = require('../lib/tree').parsed();
 
-  //TODO  if no cmd is sent, no need to run the check  
+  //TODO  if no cmd is sent, no need to run the check, just fail right away with help instead  
   systemcheck.run();
   
   var cmd = opts.argv.cooked.shift();
